@@ -1,4 +1,4 @@
-OVERVIEW
+OVERVIEW: 
 A simple React-based job portal where users can browse, search, save, and manage jobs efficiently.
 
 FEATURES
@@ -16,7 +16,7 @@ TECH STACK
 - CSS
 - LOCAL STORAGE
 
-API
+API: 
 https://jsonplaceholder.typicode.com/posts
 
 CONCEPTS USED 
