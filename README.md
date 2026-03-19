@@ -1,16 +1,33 @@
-# React + Vite
+OVERVIEW
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React-based job portal where users can browse, search, save, and manage jobs efficiently.
 
-Currently, two official plugins are available:
+FEATURES
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Search jobs
+- Save / remove jobs
+- Toggle: All Jobs / Saved Jobs
+- Pagination (10 per page)
+- Data persistence using localStorage
+- Loading & Empty states
 
-## React Compiler
+TECH STACK
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- REACT
+- JAVASCRIPT
+- HTML
+- CSS
+- LOCAL STORAGE
 
-## Expanding the ESLint configuration
+API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+https://jsonplaceholder.typicode.com/posts
+
+CONCEPTS USED 
+
+- State management (useState & useEffect)
+- Side effects (API, localStorage)
+- Conditional rendering
+- List rendering (map)
+- Immutability
+- Controlled components
