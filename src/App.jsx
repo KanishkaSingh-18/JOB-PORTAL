@@ -36,14 +36,21 @@ function App() {
     localStorage.setItem("search", search);
   }, [search]);
 
-  useEffect(() => {     //side effect (API call, runs once on mount)
-    fetch("https://jsonplaceholder.typicode.com/posts")
+  useEffect(() => {
+    const url = search
+      ? `https://remotive.com/api/remote-jobs?search=${search}`
+      : `https://remotive.com/api/remote-jobs`;
+
+    setLoading(true);
+
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setJobs(data);     //updating state with API data
-        setLoading(false);    //updating loading state
+        setJobs(data.jobs || []);   // ✅ IMPORTANT
+        setLoading(false);
       });
-  }, []);
+  }, [search]);
+
 
   const handleSave = (job) => {   //event handling: save/unsave jobs
     if (savedJobs.find((j) => j.id === job.id)) {
@@ -54,21 +61,19 @@ function App() {
   };
 
   const handleRemove = (id) => {     //event handling: remove job
-    setSavedJobs(savedJobs.filter((job) => job.id !== id));     
+    setSavedJobs(savedJobs.filter((job) => job.id !== id));
   };
 
   const displayedJobs = view === "all" ? jobs : savedJobs;    //derived state: choosing which job to show
 
-  const filteredJobs = displayedJobs.filter((job) =>      //derived state: filtering based on search
-    job.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredJobs = displayedJobs;
 
   const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);   //pagination
 
   const startIndex = (currentPage - 1) * jobsPerPage;  //calculates from where data should start for current page
 
   const paginatedJobs = filteredJobs.slice(   //array slicing to display subset of data based on current page
-    startIndex, 
+    startIndex,
     startIndex + jobsPerPage
   );
 
@@ -76,13 +81,7 @@ function App() {
     setCurrentPage(1);
   }, [search, view]);
 
-  if (loading) {
-    return (
-      <p style={{ textAlign: "center", color: "white", marginTop: "50px" }}>
-        Loading jobs...
-      </p>
-    );
-  }
+  { loading && <p style={{ textAlign: "center" }}>Loading...</p> }
 
   return (
     <div

@@ -66,9 +66,15 @@ function JobCard({ job, view, handleSave, handleRemove, savedJobs }) {
           💼 Job #{job.id}
         </h3>
 
-        <p style={{ color: "#f5f5f5", lineHeight: "1.5" }}>
-          {job.body}
-        </p>
+        <div style={{ color: "#f5f5f5", lineHeight: "1.5" }}>
+          <h3 style={{ margin: "5px 0" }}>{job.title}</h3>
+          <p style={{ margin: "3px 0" }}>{job.company_name}</p>
+          <p style={{ margin: "3px 0" }}>{job.candidate_required_location}</p>
+
+          <p style={{ marginTop: "8px" }}>
+            {job.description.replace(/<[^>]+>/g, "").slice(0, 120)}...
+          </p>
+        </div>
       </div>
 
       {view === "all" ? (    //conditional rendering
@@ -88,7 +94,7 @@ function JobCard({ job, view, handleSave, handleRemove, savedJobs }) {
             transition: "0.3s",
             width: "30%",
             alignSelf: "center",
-            fontSize:"18px"
+            fontSize: "18px"
           }}
         >
           {isSaved ? "Saved ✅" : "Save Job"}    {/*conditional text rendering*/}
@@ -108,7 +114,7 @@ function JobCard({ job, view, handleSave, handleRemove, savedJobs }) {
             transition: "0.3s",
             width: "30%",
             alignSelf: "center",
-            fontSize:"18px"
+            fontSize: "18px"
           }}
         >
           Remove ❌
